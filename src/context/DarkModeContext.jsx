@@ -1,4 +1,4 @@
-import { children, createContext, useState } from 'react';
+import { createContext, useState } from 'react';
 
 const DarkModeContext = createContext();
 
@@ -14,7 +14,11 @@ function DarkModeProvider({ children }) {
     toggleDarkMode,
   };
 
-  return <DarkModeProvider value={valueToShare}>{children}</DarkModeProvider>;
+  return (
+    <DarkModeContext.Provider value={valueToShare}>
+      {children}
+    </DarkModeContext.Provider>
+  );
 }
 
 export default DarkModeContext;
